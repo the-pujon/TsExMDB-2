@@ -6,13 +6,10 @@ const createProduct = async (req: Request,res: Response) => {
 
     try {
         const { product } = req.body
-        console.log("product",product)
 
         const zodParseData = ProductSchema.parse(product)
-        console.log('zodParseData',zodParseData)
 
         const result = await productServices.createProductIntoDB(zodParseData)
-        console.log('result',result)
 
         res.status(200).json({
             success: true,
@@ -46,4 +43,23 @@ const getAllProducts = async (req: Request,res: Response) => {
     }
 }
 
-export const productControllers = { createProduct,getAllProducts }
+const getSingleProduct = async (req: Request,res: Response) => {
+    try {
+        const { productId } = req.params
+        const result = await productServices.getSingleProductByIDFromDB(productId)
+        res.status(200).json({
+            success: true,
+            message: 'Products fetched successfully!',
+            data: result,
+        });
+    }
+    catch (err: any) {
+        res.status(500).json({
+            success: false,
+            message: err.message || 'something went wrong while fetching product',
+            error: err,
+        });
+    }
+}
+
+export const productControllers = { createProduct,getAllProducts,getSingleProduct }
