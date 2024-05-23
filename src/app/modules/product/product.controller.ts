@@ -28,4 +28,22 @@ const createProduct = async (req: Request,res: Response) => {
     }
 }
 
-export const productControllers = { createProduct }
+const getAllProducts = async (req: Request,res: Response) => {
+    try {
+        const result = await productServices.getAllProductsFromDB()
+        res.status(200).json({
+            success: true,
+            message: 'Products fetched successfully!',
+            data: result,
+        });
+
+    } catch (err: any) {
+        res.status(500).json({
+            success: false,
+            message: err.message || 'something went wrong while fetching product',
+            error: err,
+        });
+    }
+}
+
+export const productControllers = { createProduct,getAllProducts }
