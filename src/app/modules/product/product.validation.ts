@@ -23,4 +23,4 @@ const ProductSchema = z.object({
     inventory: InventorySchema,
 });
 
-export { VariantSchema,InventorySchema,ProductSchema };
+export { ProductSchema };
