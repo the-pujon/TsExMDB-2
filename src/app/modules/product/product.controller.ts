@@ -27,7 +27,8 @@ const createProduct = async (req: Request,res: Response) => {
 
 const getAllProducts = async (req: Request,res: Response) => {
     try {
-        const result = await productServices.getAllProductsFromDB()
+        const { searchTerm } = req.query as { searchTerm: string }
+        const result = await productServices.getAllProductsFromDB(searchTerm)
         res.status(200).json({
             success: true,
             message: 'Products fetched successfully!',
@@ -88,6 +89,7 @@ const updateProduct = async (req: Request,res: Response) => {
 
         const { productId } = req.params
         const product = req.body
+
         const result = await productServices.updateProductInDB(productId,product)
 
         res.status(200).json({
