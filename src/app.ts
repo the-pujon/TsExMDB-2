@@ -13,6 +13,13 @@ app.use(cors());
 app.use('/api/products',ProductRoute)
 app.use('/api/orders',OrderRoute)
 
+app.get("/",(req: Request,res: Response) => {
+    res.status(200).json({
+        success: true,
+        "message": "Welcome to Express Typescript MongoDB Mongoose assignment - ExTsMDB",
+    });
+})
+
 app.all("*",(req: Request,res: Response) => {
     res.status(400).json({
         success: false,
