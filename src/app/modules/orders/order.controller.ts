@@ -14,8 +14,9 @@ const createOrder = async (req: Request,res: Response) => {
             data: result,
         });
 
-    } catch (err: any) {
-        console.log(err)
+    }
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    catch (err: any) {
         res.status(500).json({
             success: false,
             message: err.message || 'something went wrong while creating order',
@@ -36,7 +37,9 @@ const getOrder = async (req: Request,res: Response) => {
             data: result,
         });
 
-    } catch (err: any) {
+    }
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    catch (err: any) {
         res.status(500).json({
             success: false,
             message: err.message || 'something went wrong while getting order',

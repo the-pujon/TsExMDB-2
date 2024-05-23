@@ -16,7 +16,9 @@ const createProduct = async (req: Request,res: Response) => {
             message: 'Product created successfully!',
             data: result,
         });
-    } catch (err: any) {
+    }
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    catch (err: any) {
         res.status(500).json({
             success: false,
             message: err.message || 'something went wrong while creating product',
@@ -35,7 +37,9 @@ const getAllProducts = async (req: Request,res: Response) => {
             data: result,
         });
 
-    } catch (err: any) {
+    }
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    catch (err: any) {
         res.status(500).json({
             success: false,
             message: err.message || 'something went wrong while fetching product',
@@ -54,6 +58,7 @@ const getSingleProduct = async (req: Request,res: Response) => {
             data: result,
         });
     }
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     catch (err: any) {
         res.status(500).json({
             success: false,
@@ -75,7 +80,9 @@ const deleteProduct = async (req: Request,res: Response) => {
             data: null,
         });
 
-    } catch (err: any) {
+    }
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    catch (err: any) {
         res.status(500).json({
             success: false,
             message: err.message || 'something went wrong while deleting product',
@@ -98,7 +105,9 @@ const updateProduct = async (req: Request,res: Response) => {
             data: result,
         });
 
-    } catch (err: any) {
+    }
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    catch (err: any) {
         res.status(500).json({
             success: false,
             message: err.message || 'something went wrong while updating product',

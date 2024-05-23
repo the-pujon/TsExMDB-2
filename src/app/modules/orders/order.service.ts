@@ -21,15 +21,11 @@ const createOrderIntoDB = async (orderData: TOrder) => {
         quantity: product.inventory.quantity - quantity,
         inStock: (product.inventory.quantity - quantity) > 0
     }
-    //const updatedQuantity = product.inventory.quantity - quantity;
-    //const updatedInStock = updatedQuantity > 0;
 
-    // Update the product's inventory details
     await ProductModel.findByIdAndUpdate(productId,{
         inventory
     });
 
-    // Create the order
     const result = await OrderModel.create(orderData);
 
     return result;
@@ -49,8 +45,6 @@ const gettingOrderFromDB = async (email: string) => {
     else {
         result = await OrderModel.find()
     }
-
-    console.log(result)
 
     return result
 }
